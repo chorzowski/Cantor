@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="BEntities-Web.config Connection String" description="BEntities Parametry połączenia używane w pliku web.config przez aplikację w celu uzyskiwania dostępu do bazy danych." defaultValue="Server=tcp:exchangeapplication.database.windows.net,1433;Initial Catalog=EA;Persist Security Info=False;User ID=Adrian@exchangeapplication.database.windows.net;Password=Onomatopeja1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Adrian\\source\\repos\\ExchangeApplication\\ExchangeApplication\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='BEntities']/@connectionString" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Parametry połączenia używane w pliku web.config przez aplikację w celu uzyskiwania dostępu do bazy danych." defaultValue="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-ExchangeApplication-20181017012308.mdf;Initial Catalog=aspnet-ExchangeApplication-20181017012308;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Adrian\\source\\repos\\ExchangeApplication\\ExchangeApplication\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="BankEntities-Web.config Connection String" description="BankEntities Parametry połączenia używane w pliku web.config przez aplikację w celu uzyskiwania dostępu do bazy danych." defaultValue="metadata=res://*/Models.BankModel.csdl|res://*/Models.BankModel.ssdl|res://*/Models.BankModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(LocalDb)\MSSQLLocalDB;attachdbfilename=|DataDirectory|\aspnet-ExchangeApplication-20181017012308.mdf;initial catalog=aspnet-ExchangeApplication-20181017012308;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Adrian\\source\\repos\\ExchangeApplication\\ExchangeApplication\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='BankEntities']/@connectionString" />
+  </parameter>
+</parameters>

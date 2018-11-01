@@ -1,0 +1,266 @@
+﻿@model ExchangeApplication.Models.ApplicationUser
+
+
+<h2>About</h2>
+
+
+<div>
+    <div class="box">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>Bank</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped table-condensed table-bordered">
+                    <tr>
+                        <th>
+                            <p> Currency <p>
+                        </th>
+                        <th>
+                            <p> Unit <p>
+                        </th>
+                        <th>
+                            <p> Value <p>
+                        </th>
+                        <th>
+                            <p> Actions <p>
+                        </th>
+                      </tr>
+
+
+                    <tr>
+                        <td>
+                            <p> @ViewBag.USDN <p>
+                        </td>
+                        <td>
+                            <p>@ViewBag.USDU <p>
+                        </td>
+                        <td>
+                            <p> @ViewBag.USDA <p>
+                        </td>
+                        <td>
+                            <p> @Html.ActionLink("Buy", "Buy", "Home", new { id = Model.Id, currency = @ViewBag.USDN }, null)<p> <p>
+                        </td>                      
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <p> @ViewBag.EURN <p>
+                        </td>
+                        <td>
+                            <p> @ViewBag.EURU <p>
+                        </td>
+                        <td>
+                            <p> @ViewBag.EURA <p>
+                        </td>
+                        <td>
+                            <p> @Html.ActionLink("Buy", "Buy", "Home", new { id = Model.Id, currency = @ViewBag.EURN }, null)<p> <p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <p> @ViewBag.CHFN <p>
+                        </td>
+                        <td>
+                            <p> @ViewBag.CHFU <p>
+                        </td>
+                        <td>
+                            <p> @ViewBag.CHFA <p>
+                        </td>
+                        <td>
+                            <p> @Html.ActionLink("Buy", "Buy", "Home", new { id = Model.Id, currency = @ViewBag.CHFN }, null)<p> <p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <p> @ViewBag.RUBN <p>
+                        </td>
+                        <td>
+                            <p>  @ViewBag.RUBU<p>
+                        </td>
+                        <td>
+                            <p> @ViewBag.RUBA <p>
+                        </td>
+                        <td>
+                            <p> @Html.ActionLink("Buy", "Buy", "Home", new { id = Model.Id, currency = @ViewBag.RUBN }, null)<p> <p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <p> @ViewBag.CZKN <p>
+                        </td>
+                        <td>
+                            <p> @ViewBag.CZKU <p>
+                        </td>
+                        <td>
+                            <p> @ViewBag.CZKA <p>
+                        </td>
+                        <td>
+                            <p> @Html.ActionLink("Buy", "Buy", "Home", new { id = Model.Id, currency = @ViewBag.CZKN }, null)<p> <p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <p> @ViewBag.GBPN <p>
+                        </td>
+                        <td>
+                            <p> @ViewBag.GBPU <p>
+                        </td>
+                        <td>
+                            <p> @ViewBag.GBPA <p>
+                        </td>
+                        <td>
+                            <p> @Html.ActionLink("Buy", "Buy", "Home", new { id = Model.Id, currency = @ViewBag.GBPN }, null)<p> <p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>My wallet</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped table-condensed table-bordered">
+                    <tr>
+                        <th>
+                            <p> Currency <p>
+                        </th>
+                        <th>
+                            <p> Unit Price <p>
+                        </th>
+                        <th>
+                            <p> Amount <p>
+                        </th>
+                        <th>
+                            <p> Value <p>
+                        </th>
+                        <th>
+                            <p> Action <p>
+                        </th>
+                    </tr>
+
+
+                    <tr>
+                        <td>
+                            <p> @ViewBag.USDN <p>
+                        </td>
+                        <td>
+                            <p> @ViewBag.USDA <p>
+                        </td>
+                        <td>
+                            <p> @Model.info.USD <p>
+                        </td>
+                        <td>
+                            <p>  @ViewBag.USDM <p>
+                        </td>
+                        <td>
+                            <p> @Html.ActionLink("Sell", "Sell", "Home", new { id = Model.Id, currency = @ViewBag.USDN }, null)<p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <p> @ViewBag.EURN <p>
+                        </td>
+                        <td>
+                            <p> @ViewBag.EURA <p>
+                        </td>
+                        <td>
+                            <p> @Model.info.EUR <p>
+                        </td>
+                        <td>
+                            <p> @ViewBag.EURM <p>
+                        </td>
+                        <td>
+                            <p> @Html.ActionLink("Sell", "Sell", "Home", new { id = Model.Id, currency = @ViewBag.EURN }, null)<p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <p> @ViewBag.CHFN <p>
+                        </td>
+                        <td>
+                            <p> @ViewBag.CHFA <p>
+                        </td>
+                        <td>
+                            <p> @Model.info.CHF <p>
+                        </td>
+                        <td>
+                            <p> @ViewBag.CHFM <p>
+                        </td>
+                        <td>
+                            <p> @Html.ActionLink("Sell", "Sell", "Home", new { id = Model.Id, currency = @ViewBag.CHFN }, null)<p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <p> @ViewBag.RUBN <p>
+                        </td>
+                        <td>
+                            <p> @ViewBag.RUBA <p>
+                        </td>
+                        <td>
+                            <p> @Model.info.RUB <p>
+                        </td>
+                        <td>
+                            <p> @ViewBag.RUBM <p>
+                        </td>
+                        <td>
+                            <p> @Html.ActionLink("Sell", "Sell", "Home", new { id = Model.Id, currency = @ViewBag.RUBN }, null)<p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <p> @ViewBag.CZKN <p>
+                        </td>
+                        <td>
+                            <p> @ViewBag.CZKA <p>
+                        </td>
+                        <td>
+                            <p> @Model.info.CZK <p>
+                        </td>
+                        <td>
+                            <p> @ViewBag.CZKM <p>
+                        </td>
+                        <td>
+                            <p> @Html.ActionLink("Sell", "Sell", "Home", new { id = Model.Id, currency = @ViewBag.CZKN }, null)<p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <p> @ViewBag.GBPN <p>
+                        </td>
+                        <td>
+                            <p> @ViewBag.GBPA <p>
+                        </td>
+                        <td>
+                            <p> @Model.info.GBP <p>
+                        </td>
+                        <td>
+                            <p> @ViewBag.GBPM <p>
+                        </td>
+                        <td>
+                            <p> @Html.ActionLink("Sell", "Sell", "Home", new { id = Model.Id, currency = @ViewBag.GBPN }, null)<p>
+                        </td>
+                    </tr>
+
+
+
+                </table>
+                <h1>You have @Model.info.PLN zl.</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="clear:both"></div>

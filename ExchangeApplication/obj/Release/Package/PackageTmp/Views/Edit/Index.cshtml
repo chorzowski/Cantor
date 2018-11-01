@@ -1,0 +1,21 @@
+﻿@model ExchangeApplication.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Edition Mode</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            <p> Welcome to editing mode @Model.info.FirstName  @Model.info.LastName </p>
+        </th>
+      
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=@Model.info.InfoId }) |
+            @Html.ActionLink("Details", "Details", new { id= @Model.info.InfoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id= @Model.info.InfoId })
+        </td>
+    </tr>
+</table>

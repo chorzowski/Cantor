@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Bank">
+    <Key>
+      <PropertyRef Name="BankId" />
+    </Key>
+    <Property Name="BankId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USD" Type="Int32" />
+    <Property Name="EUR" Type="Int32" />
+    <Property Name="CHF" Type="Int32" />
+    <Property Name="RUB" Type="Int32" />
+    <Property Name="CZK" Type="Int32" />
+    <Property Name="GBP" Type="Int32" />
+    <Property Name="PLN" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="BEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bank" EntityType="Self.Bank" />
+  </EntityContainer>
+</Schema>

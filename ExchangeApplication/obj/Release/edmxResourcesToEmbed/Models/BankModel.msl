@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="BEntities">
+    <EntitySetMapping Name="Bank">
+      <EntityTypeMapping TypeName="Model.Bank">
+        <MappingFragment StoreEntitySet="Bank">
+          <ScalarProperty Name="BankId" ColumnName="BankId" />
+          <ScalarProperty Name="USD" ColumnName="USD" />
+          <ScalarProperty Name="EUR" ColumnName="EUR" />
+          <ScalarProperty Name="CHF" ColumnName="CHF" />
+          <ScalarProperty Name="RUB" ColumnName="RUB" />
+          <ScalarProperty Name="CZK" ColumnName="CZK" />
+          <ScalarProperty Name="GBP" ColumnName="GBP" />
+          <ScalarProperty Name="PLN" ColumnName="PLN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
