@@ -49,7 +49,7 @@ namespace ExchangeApplication.Controllers
         [Authorize]
         public ActionResult About()
         {
-            
+
             var arr = _getJeson.GetJson();
             var us = _getUserId.GetUserID(db);
 
