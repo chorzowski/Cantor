@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using ExchangeApplication.App_Start;
 using ExchangeApplication.Models;
 using ExchangeApplication.Utilities;
 using ExchangeApplication.ViewModels;
@@ -22,36 +23,8 @@ namespace ExchangeApplication
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            ConfigureContainer();
-          
-
-            //    var builder = new ContainerBuilder();
-
-
-            //    builder.RegisterType<SaveData>().As<ISaveData>();
-
-            ////    builder.RegisterControllers(typeof(MvcApplication).Assembly);
-
-
-            //    builder.Build();
-
-            //    // ContainerConfig();
-        }
-
-        private void ConfigureContainer()
-        {
-            var builder = new ContainerBuilder();
-            builder.RegisterControllers(typeof(MvcApplication).Assembly);
-            builder.RegisterAssemblyModules(typeof(MvcApplication).Assembly);
-            builder.RegisterType<SaveData>().As<ISaveData>();
-            builder.RegisterType<GetJeson>().As<IGetJeson>();
-            builder.RegisterType<GetUserId>().As<IGetUserId>();
-            builder.RegisterType<BuyMoney>().As<IBuyMoney>();
-            builder.RegisterType<SellMoney>().As<ISellMoney>();
-            builder.RegisterType<JsonIdUser>().As<IJsonIdUser>();
-
-            var container = builder.Build();
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            DependencyRegistrator.ConfigureContainer();
+            
         }
     }
 }

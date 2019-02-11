@@ -198,6 +198,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DependencyRegistrator.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -235,7 +236,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utilities\BuyMoney.cs" />
-    <Compile Include="Utilities\ContainerConfig.cs" />
     <Compile Include="Utilities\GetJeson.cs" />
     <Compile Include="Utilities\GetUserId.cs" />
     <Compile Include="Utilities\IBuyMoney.cs" />
