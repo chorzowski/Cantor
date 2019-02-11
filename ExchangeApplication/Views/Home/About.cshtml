@@ -1,4 +1,4 @@
-﻿@model ExchangeApplication.Models.ApplicationUser
+﻿@model ExchangeApplication.ViewModels.JsonIdUser
 
 
 <h2>About</h2>
@@ -30,91 +30,91 @@
 
                     <tr>
                         <td>
-                            <p> @ViewBag.USDN <p>
+                            <p> @Model.ar[0].rates[0].currency <p>
                         </td>
                         <td>
-                            <p>@ViewBag.USDU <p>
+                            <p> 1 <p>
                         </td>
                         <td>
-                            <p> @ViewBag.USDA <p>
+                            <p> @Model.ar[0].rates[0].ask <p>
                         </td>
                         <td>
-                            <p> @Html.ActionLink("Buy", "Buy", "Home", new { id = Model.Id, currency = @ViewBag.USDN }, null)<p> <p>
+                            <p> @Html.ActionLink("Buy", "Buy", "Home", new { id = Model.user.Id, currency = @Model.ar[0].rates[0].currency }, null)<p> <p>
                         </td>                      
                     </tr>
 
                     <tr>
                         <td>
-                            <p> @ViewBag.EURN <p>
+                            <p> @Model.ar[0].rates[3].currency <p>
                         </td>
                         <td>
-                            <p> @ViewBag.EURU <p>
+                            <p> 1 <p>
                         </td>
                         <td>
-                            <p> @ViewBag.EURA <p>
+                            <p> @Model.ar[0].rates[3].ask <p>
                         </td>
                         <td>
-                            <p> @Html.ActionLink("Buy", "Buy", "Home", new { id = Model.Id, currency = @ViewBag.EURN }, null)<p> <p>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <p> @ViewBag.CHFN <p>
-                        </td>
-                        <td>
-                            <p> @ViewBag.CHFU <p>
-                        </td>
-                        <td>
-                            <p> @ViewBag.CHFA <p>
-                        </td>
-                        <td>
-                            <p> @Html.ActionLink("Buy", "Buy", "Home", new { id = Model.Id, currency = @ViewBag.CHFN }, null)<p> <p>
+                            <p> @Html.ActionLink("Buy", "Buy", "Home", new { id = Model.user.Id, currency = @Model.ar[0].rates[3].currency }, null)<p> <p>
                         </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <p> @ViewBag.RUBN <p>
+                            <p> @Model.ar[0].rates[5].currency <p>
                         </td>
                         <td>
-                            <p>  @ViewBag.RUBU<p>
+                            <p> 1 <p>
                         </td>
                         <td>
-                            <p> @ViewBag.RUBA <p>
+                            <p> @Model.ar[0].rates[5].ask <p>
                         </td>
                         <td>
-                            <p> @Html.ActionLink("Buy", "Buy", "Home", new { id = Model.Id, currency = @ViewBag.RUBN }, null)<p> <p>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <p> @ViewBag.CZKN <p>
-                        </td>
-                        <td>
-                            <p> @ViewBag.CZKU <p>
-                        </td>
-                        <td>
-                            <p> @ViewBag.CZKA <p>
-                        </td>
-                        <td>
-                            <p> @Html.ActionLink("Buy", "Buy", "Home", new { id = Model.Id, currency = @ViewBag.CZKN }, null)<p> <p>
+                            <p> @Html.ActionLink("Buy", "Buy", "Home", new { id = Model.user.Id, currency = @Model.ar[0].rates[5].currency }, null)<p> <p>
                         </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <p> @ViewBag.GBPN <p>
+                            <p> @Model.ar[0].rates[10].currency <p>
                         </td>
                         <td>
-                            <p> @ViewBag.GBPU <p>
+                            <p>  0.1<p>
                         </td>
                         <td>
-                            <p> @ViewBag.GBPA <p>
+                            <p> @Model.ar[0].rates[10].ask <p>
                         </td>
                         <td>
-                            <p> @Html.ActionLink("Buy", "Buy", "Home", new { id = Model.Id, currency = @ViewBag.GBPN }, null)<p> <p>
+                            <p> @Html.ActionLink("Buy", "Buy", "Home", new { id = Model.user.Id, currency = @Model.ar[0].rates[10].currency }, null)<p> <p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <p> @Model.ar[0].rates[8].currency <p>
+                        </td>
+                        <td>
+                            <p> 0.1 <p>
+                        </td>
+                        <td>
+                            <p> @Model.ar[0].rates[8].ask <p>
+                        </td>
+                        <td>
+                            <p> @Html.ActionLink("Buy", "Buy", "Home", new { id = Model.user.Id, currency = @Model.ar[0].rates[8].currency }, null)<p> <p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <p> @Model.ar[0].rates[6].currency <p>
+                        </td>
+                        <td>
+                            <p> 1 <p>
+                        </td>
+                        <td>
+                            <p> @Model.ar[0].rates[6].ask <p>
+                        </td>
+                        <td>
+                            <p> @Html.ActionLink("Buy", "Buy", "Home", new { id = Model.user.Id, currency = @Model.ar[0].rates[6].currency }, null)<p> <p>
                         </td>
                     </tr>
                 </table>
@@ -149,116 +149,113 @@
 
                     <tr>
                         <td>
-                            <p> @ViewBag.USDN <p>
+                            <p> @Model.ar[0].rates[0].currency <p>
                         </td>
                         <td>
-                            <p> @ViewBag.USDA <p>
+                            <p> @Model.ar[0].rates[0].bid <p>
                         </td>
                         <td>
-                            <p> @Model.info.USD <p>
+                            <p> @Model.user.info.USD <p>
                         </td>
                         <td>
                             <p>  @ViewBag.USDM <p>
                         </td>
                         <td>
-                            <p> @Html.ActionLink("Sell", "Sell", "Home", new { id = Model.Id, currency = @ViewBag.USDN }, null)<p>
+                            <p> @Html.ActionLink("Sell", "Sell", "Home", new { id = Model.user.Id, currency = @Model.ar[0].rates[0].currency }, null)<p>
                         </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <p> @ViewBag.EURN <p>
+                            <p> @Model.ar[0].rates[3].currency <p>
                         </td>
                         <td>
-                            <p> @ViewBag.EURA <p>
+                            <p> @Model.ar[0].rates[3].bid <p>
                         </td>
                         <td>
-                            <p> @Model.info.EUR <p>
+                            <p> @Model.user.info.EUR <p>
                         </td>
                         <td>
                             <p> @ViewBag.EURM <p>
                         </td>
                         <td>
-                            <p> @Html.ActionLink("Sell", "Sell", "Home", new { id = Model.Id, currency = @ViewBag.EURN }, null)<p>
+                            <p> @Html.ActionLink("Sell", "Sell", "Home", new { id = Model.user.Id, currency = @Model.ar[0].rates[3].currency }, null)<p>
                         </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <p> @ViewBag.CHFN <p>
+                            <p> @Model.ar[0].rates[5].currency <p>
                         </td>
                         <td>
-                            <p> @ViewBag.CHFA <p>
+                            <p> @Model.ar[0].rates[5].bid <p>
                         </td>
                         <td>
-                            <p> @Model.info.CHF <p>
+                            <p> @Model.user.info.CHF <p>
                         </td>
                         <td>
                             <p> @ViewBag.CHFM <p>
                         </td>
                         <td>
-                            <p> @Html.ActionLink("Sell", "Sell", "Home", new { id = Model.Id, currency = @ViewBag.CHFN }, null)<p>
+                            <p> @Html.ActionLink("Sell", "Sell", "Home", new { id = Model.user.Id, currency = @Model.ar[0].rates[5].currency }, null)<p>
                         </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <p> @ViewBag.RUBN <p>
+                            <p> @Model.ar[0].rates[10].currency <p>
                         </td>
                         <td>
-                            <p> @ViewBag.RUBA <p>
+                            <p> @Model.ar[0].rates[10].bid <p>
                         </td>
                         <td>
-                            <p> @Model.info.RUB <p>
+                            <p> @Model.user.info.RUB <p>
                         </td>
                         <td>
                             <p> @ViewBag.RUBM <p>
                         </td>
                         <td>
-                            <p> @Html.ActionLink("Sell", "Sell", "Home", new { id = Model.Id, currency = @ViewBag.RUBN }, null)<p>
+                            <p> @Html.ActionLink("Sell", "Sell", "Home", new { id = Model.user.Id, currency = @Model.ar[0].rates[10].currency }, null)<p>
                         </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <p> @ViewBag.CZKN <p>
+                            <p> @Model.ar[0].rates[8].currency <p>
                         </td>
                         <td>
-                            <p> @ViewBag.CZKA <p>
+                            <p> @Model.ar[0].rates[8].bid <p>
                         </td>
                         <td>
-                            <p> @Model.info.CZK <p>
+                            <p> @Model.user.info.CZK <p>
                         </td>
                         <td>
                             <p> @ViewBag.CZKM <p>
                         </td>
                         <td>
-                            <p> @Html.ActionLink("Sell", "Sell", "Home", new { id = Model.Id, currency = @ViewBag.CZKN }, null)<p>
+                            <p> @Html.ActionLink("Sell", "Sell", "Home", new { id = Model.user.Id, @Model.ar[0].rates[8].currency }, null)<p>
                         </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <p> @ViewBag.GBPN <p>
+                            <p> @Model.ar[0].rates[6].currency <p>
                         </td>
                         <td>
-                            <p> @ViewBag.GBPA <p>
+                            <p> @Model.ar[0].rates[6].bid <p>
                         </td>
                         <td>
-                            <p> @Model.info.GBP <p>
+                            <p> @Model.user.info.GBP <p>
                         </td>
                         <td>
                             <p> @ViewBag.GBPM <p>
                         </td>
                         <td>
-                            <p> @Html.ActionLink("Sell", "Sell", "Home", new { id = Model.Id, currency = @ViewBag.GBPN }, null)<p>
+                            <p> @Html.ActionLink("Sell", "Sell", "Home", new { id = Model.user.Id, @Model.ar[0].rates[6].currency }, null)<p>
                         </td>
                     </tr>
-
-
-
                 </table>
-                <h1>You have @Model.info.PLN zl.</h1>
+                <h1>You have @Model.user.info.PLN zl.</h1>
             </div>
         </div>
     </div>

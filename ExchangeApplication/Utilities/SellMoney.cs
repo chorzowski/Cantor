@@ -20,7 +20,7 @@ namespace ExchangeApplication.Utilities
         }
 
         [HttpPost]
-        public ActionResult SellEUR(int? numberIdUser, int amount, String currencyName, ApplicationDbContext db)
+        public ActionResult SellEUR(int? numberIdUser, string currencyNameString, int amount, ApplicationDbContext db)
         {
             if (numberIdUser == null)
             {
@@ -31,90 +31,89 @@ namespace ExchangeApplication.Utilities
             {
                 return HttpNotFound();
             }
-            var arr = _getJeson.GetJson();
+            var exchangeRate = _getJeson.GetJson();
             int price = 0;
 
-            switch (currencyName)
+            switch (currencyNameString)
             {
-                case ("US"):
-                    price = (int)arr.items[0].purchasePrice;
+                case ("dolar amerykański"):
+                    price = (int)exchangeRate[0].rates[0].bid;
                     if (amount <= info.USD)
                     {
                         info.USD = info.USD - amount;
                         int newZlotyValue = amount * price;
                         info.PLN = info.PLN + newZlotyValue;
-                        _saveData.Save(numberIdUser, db); //SaveData(param1);
+                        _saveData.Save(numberIdUser, db); 
                         return RedirectToAction("About");
                     }
                     else
                     {
                         return View("ErrorLackOfMoney");
                     }
-                case ("Euro"):
-                    price = (int)arr.items[1].purchasePrice;
+                case ("euro"):
+                    price = (int)exchangeRate[0].rates[3].bid;
                     if (amount <= info.EUR)
                     {
-
                         info.EUR = info.EUR - amount;
                         int newZlotyValue = amount * price;
                         info.PLN = info.PLN + newZlotyValue;
-                        _saveData.Save(numberIdUser, db); //SaveData(param1);
+                        _saveData.Save(numberIdUser, db); 
                         return RedirectToAction("About");
                     }
                     else
                     {
                         return View("ErrorLackOfMoney");
                     }
-                case ("Swiss"):
-                    price = (int)arr.items[1].purchasePrice;
+                case ("frank szwajcarski"):
+                    price = (int)exchangeRate[0].rates[5].bid;
                     if (amount <= info.CHF)
                     {
                         info.CHF = info.CHF - amount;
                         int newZlotyValue = amount * price;
                         info.PLN = info.PLN + newZlotyValue;
-                        _saveData.Save(numberIdUser, db); //SaveData(param1);
+                        _saveData.Save(numberIdUser, db); 
                         return RedirectToAction("About");
                     }
                     else
                     {
                         return View("ErrorLackOfMoney");
                     }
-                case ("Russian"):
-                    price = (int)arr.items[1].purchasePrice;
+                case ("korona norweska"):
+                    double priceDouble = exchangeRate[0].rates[10].bid;
                     if (amount <= info.RUB)
                     {
-                        info.RUB = info.RUB - amount * 100;
-                        int newZlotyValue = amount * price;
-                        info.PLN = info.PLN + newZlotyValue;
-                        _saveData.Save(numberIdUser, db); //SaveData(param1);
+                        info.RUB = info.RUB - amount;
+                        double newZlotyValueDouble = amount * priceDouble;
+                        info.PLN = info.PLN + ((int)newZlotyValueDouble);
+                        _saveData.Save(numberIdUser, db); 
                         return RedirectToAction("About");
                     }
                     else
                     {
                         return View("ErrorLackOfMoney");
                     }
-                case ("Czech"):
-                    price = (int)arr.items[1].purchasePrice;
+                case ("korona czeska"):
+                    priceDouble = exchangeRate[0].rates[8].bid;
                     if (amount <= info.CZK)
                     {
-                        info.CZK = info.CZK - amount * 100;
-                        int newZlotyValue = amount * price;
-                        info.PLN = info.PLN + newZlotyValue;
-                        _saveData.Save(numberIdUser, db); //SaveData(param1);
+                        info.CZK = info.CZK - amount;
+                        double newZlotyValueDouble = amount * priceDouble;
+                        info.PLN = info.PLN + ((int)newZlotyValueDouble);
+                        _saveData.Save(numberIdUser, db); 
                         return RedirectToAction("About");
                     }
                     else
                     {
                         return View("ErrorLackOfMoney");
                     }
-                case ("Pound"):
-                    price = (int)arr.items[1].purchasePrice;
+                case ("funt szterling"):
+                    price = (int)exchangeRate[0].rates[6].bid;
                     if (amount <= info.GBP)
                     {
                         info.GBP = info.GBP - amount;
                         int newZlotyValue = amount * price;
                         info.PLN = info.PLN + newZlotyValue;
-                        _saveData.Save(numberIdUser, db); //SaveData(param1);
+                        _saveData.Save(numberIdUser, db); 
                         return RedirectToAction("About");
                     }
                     else

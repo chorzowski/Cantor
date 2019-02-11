@@ -42,7 +42,7 @@ namespace ExchangeApplication.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
     {
         public ApplicationDbContext()
-            : base("BEntities", throwIfV1Schema: false)
+            : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 

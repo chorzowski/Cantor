@@ -1,6 +1,7 @@
 ﻿using ExchangeApplication.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -19,9 +20,9 @@ namespace ExchangeApplication.Utilities
             _saveData = saveData;
         }
         [HttpPost]
-        public ActionResult BuyEUR(int? numberIdUser, int amount, String currencyName, ApplicationDbContext db)
+        public ActionResult BuyEUR(int? numberIdUser, string currencyNameString, int amount, ApplicationDbContext db)
         {
-            var jeson = _getJeson.GetJson();
+            var exchangeRate = _getJeson.GetJson();
             int price = 0;
             if (numberIdUser == null)
             {
@@ -33,10 +34,10 @@ namespace ExchangeApplication.Utilities
                 return HttpNotFound();
             }
 
-            switch (currencyName)
+            switch (currencyNameString)
             {
-                case ("US"):
-                    price = (int)jeson.items[0].purchasePrice;
+                case ("dolar amerykański"):
+                    price = (int)exchangeRate[0].rates[0].ask;
                     int currencyValue = amount * price;
                     if (currencyValue <= info.PLN)
                     {
@@ -49,70 +50,72 @@ namespace ExchangeApplication.Utilities
                     {
                         return View("ErrorLackOfMoney");
                     }
-                case ("Euro"):
-                    price = (int)jeson.items[1].purchasePrice;
+                case ("euro"):
+                    price = (int)exchangeRate[0].rates[3].ask;
                     currencyValue = amount * price;
                     if (currencyValue <= info.PLN)
                     {
                         info.EUR = info.EUR + amount;
                         info.PLN = info.PLN - currencyValue;
-                        _saveData.Save(numberIdUser, db);//SaveData(param1);
+                        _saveData.Save(numberIdUser, db);
                         return RedirectToAction("About");
                     }
                     else
                     {
                         return View("ErrorLackOfMoney");
                     }
-                case ("Swiss"):
-                    price = (int)jeson.items[2].purchasePrice;
+                case ("frank szwajcarski"):
+                    price = (int)exchangeRate[0].rates[5].ask;
                     currencyValue = amount * price;
                     if (currencyValue <= info.PLN)
                     {
                         info.CHF = info.CHF + amount;
                         info.PLN = info.PLN - currencyValue;
-                        _saveData.Save(numberIdUser, db); //SaveData(param1);
+                        _saveData.Save(numberIdUser, db); 
                         return RedirectToAction("About");
                     }
                     else
                     {
                         return View("ErrorLackOfMoney");
                     }
-                case ("Russian"):
-                    price = (int)jeson.items[3].purchasePrice;
-                    currencyValue = amount * price;
-                    if (currencyValue <= info.PLN)
+                case ("korona norweska"):
+                    double priceDouble = exchangeRate[0].rates[10].ask;
+                    double currencyValueDouble = amount * priceDouble;
+                    if (currencyValueDouble <= info.PLN)
                     {
-                        info.RUB = info.RUB + amount * 100;
+                        currencyValue = (int)currencyValueDouble;
+                        info.RUB = info.RUB + amount;
                         info.PLN = info.PLN - currencyValue;
-                        _saveData.Save(numberIdUser, db); //SaveData(param1);
+                        _saveData.Save(numberIdUser, db); 
                         return RedirectToAction("About");
                     }
                     else
                     {
                         return View("ErrorLackOfMoney");
                     }
-                case ("Czech"):
-                    price = (int)jeson.items[4].purchasePrice;
-                    currencyValue = amount * price;
-                    if (currencyValue <= info.PLN)
+                case ("korona czeska"):
+                    priceDouble = exchangeRate[0].rates[8].ask;
+                    currencyValueDouble = amount * priceDouble;
+                    if (currencyValueDouble <= info.PLN)
                     {
-                        info.CZK = info.CZK + amount * 100;
+                        currencyValue = (int)currencyValueDouble;
+                        info.CZK = info.CZK + amount;
                         info.PLN = info.PLN - currencyValue;
-                        _saveData.Save(numberIdUser, db); //SaveData(param1);
+                        _saveData.Save(numberIdUser, db); 
                         return RedirectToAction("About");
                     }
                     else
                     {
                         return View("ErrorLackOfMoney");
                     }
-                case ("Pound"):
-                    price = (int)jeson.items[5].purchasePrice;
+                case ("funt szterling"):
+                    price = (int)exchangeRate[0].rates[6].ask;
                     currencyValue = amount * price;
                     if (currencyValue <= info.PLN)
                     {
                         info.GBP = info.GBP + amount;
                         info.PLN = info.PLN - currencyValue;
-                        _saveData.Save(numberIdUser, db); //SaveData(param1);
+                        _saveData.Save(numberIdUser, db);
                         return RedirectToAction("About");
                     }
                     else
@@ -120,7 +123,7 @@ namespace ExchangeApplication.Utilities
                         return View("ErrorLackOfMoney");
                     }
                 default:
-                  //  ViewBag.Message11 = currencyName;
+                    //  ViewBag.Message11 = currencyName;
                     return View("Error");
             }
         }

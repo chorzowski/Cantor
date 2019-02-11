@@ -138,3 +138,5 @@ C:\Users\Adrian\source\repos\ExchangeApplication\ExchangeApplication\bin\Autofac
 C:\Users\Adrian\source\repos\ExchangeApplication\ExchangeApplication\bin\Autofac.xml
 C:\Users\Adrian\source\repos\ExchangeApplication\ExchangeApplication\bin\Autofac.Integration.Mvc.dll
 C:\Users\Adrian\source\repos\ExchangeApplication\ExchangeApplication\bin\Autofac.Integration.Mvc.xml
+C:\Users\Adrian\source\repos\ExchangeApplication\ExchangeApplication\bin\RestSharp.dll
+C:\Users\Adrian\source\repos\ExchangeApplication\ExchangeApplication\bin\RestSharp.xml

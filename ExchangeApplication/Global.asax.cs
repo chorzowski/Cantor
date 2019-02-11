@@ -2,6 +2,7 @@
 using Autofac.Integration.Mvc;
 using ExchangeApplication.Models;
 using ExchangeApplication.Utilities;
+using ExchangeApplication.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,6 +48,7 @@ namespace ExchangeApplication
             builder.RegisterType<GetUserId>().As<IGetUserId>();
             builder.RegisterType<BuyMoney>().As<IBuyMoney>();
             builder.RegisterType<SellMoney>().As<ISellMoney>();
+            builder.RegisterType<JsonIdUser>().As<IJsonIdUser>();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

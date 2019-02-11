@@ -5,9 +5,9 @@
 <h1>Hello @Model.info.FirstName !</h1>
 <h3>You are going to buy @ViewBag.Message1 to do that write your amount on the empty field and press buy button</h3>
 
-@using (Ajax.BeginForm("BuyEUR", "Home", new { numberIdUser = @Model.info.InfoId }, new AjaxOptions { UpdateTargetId = "Target", InsertionMode = InsertionMode.Replace, OnFailure = "error", Confirm = "You are going to buy " + @ViewBag.Message1 }))
+@using (Ajax.BeginForm("BuyEUR", "Home", new { numberIdUser = @Model.info.InfoId, currencyNameString = @ViewBag.Message1 }, new AjaxOptions { UpdateTargetId = "Target", InsertionMode = InsertionMode.Replace, OnFailure = "error", Confirm = "You are going to buy " + @ViewBag.Message1 }))
 {
-    <input type="hidden" id="currencyName" name="currencyName" value=@ViewBag.Message1>
+    @*<input type="text" id="currencyName" name="currencyName" value=@ViewBag.Message1>*@
     <input type="text" name="amount" id="amount" value="" />
     <input type="submit" name="param2" id="param2" value="Buy" />
 

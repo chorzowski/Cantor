@@ -5,6 +5,6 @@ namespace ExchangeApplication.Utilities
 {
     public interface IBuyMoney
     {
-        ActionResult BuyEUR(int? numberIdUser, int amount, string currencyName, ApplicationDbContext db);
+        ActionResult BuyEUR(int? numberIdUser, string currencyNameString, int amount, ApplicationDbContext db);
     }
 }

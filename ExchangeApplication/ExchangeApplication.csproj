@@ -91,6 +91,9 @@
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp, Version=106.6.7.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.6.7\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -242,6 +245,8 @@
     <Compile Include="Utilities\ISellMoney.cs" />
     <Compile Include="Utilities\SaveData.cs" />
     <Compile Include="Utilities\SellMoney.cs" />
+    <Compile Include="ViewModels\IJsonIdUser.cs" />
+    <Compile Include="ViewModels\JsonDbContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -370,6 +375,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\ErrorLackOfMoney.cshtml" />
     <Content Include="Views\Home\Buy.cshtml" />
+    <Content Include="Views\Home\About2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
