@@ -12,11 +12,22 @@ namespace ExchangeApplication.Utilities
     {
         IGetJeson _getJeson;
         ISaveData _saveData;
+        private GenericUnitOfWork uow = null;
 
         public SellMoney(IGetJeson getJeson, ISaveData saveData)
         {
             _getJeson = getJeson;
             _saveData = saveData;
+            uow = new GenericUnitOfWork();
+
+        }
+
+        public SellMoney(IGetJeson getJeson, ISaveData saveData, GenericUnitOfWork _uow)
+        {
+            _getJeson = getJeson;
+            _saveData = saveData;
+            this.uow = _uow;
+
         }
 
         [HttpPost]

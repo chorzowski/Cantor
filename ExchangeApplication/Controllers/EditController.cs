@@ -16,33 +16,45 @@ namespace ExchangeApplication.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        private GenericUnitOfWork uow = null;
+        public EditController()
+        {
+            uow = new GenericUnitOfWork();
+        }
+        public EditController(GenericUnitOfWork _uow)
+        {
+            this.uow = _uow;
+        }
+
         // GET: Edit
         [Authorize]
         public ActionResult Index()
         {
-            var id = User.Identity.GetUserId();
+            var idLoggedUser = User.Identity.GetUserId();
 
-            var us = db.Users.Find(id);
+            var loggedUser = uow.Repository<ApplicationUser>().GetDetail(p => p.Id == idLoggedUser);
 
-            return View(us);
+            return View(loggedUser);
         }
 
         // GET: Edit/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Info info = await db.Infoes.FindAsync(id);
-            if (info == null)
+            
+            var loggedUser = uow.Repository<Info>().GetDetail(p => p.InfoId == id); // add GetAwaiter
+            if (loggedUser == null)
             {
                 return HttpNotFound();
             }
-            return View(info);
+            return View(loggedUser);
         }
 
         // GET: Edit/Create
+        [ChildActionOnly]
         public ActionResult Create()
         {
             return View();
@@ -53,31 +65,31 @@ namespace ExchangeApplication.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "InfoId,FirstName,LastName,Address,TelephoneNumber,USD,EUR,CHF,RUB,CZK,GBP,PLN")] Info info)
+        [ChildActionOnly]
+        public ActionResult Create([Bind(Include = "InfoId,FirstName,LastName,Address,TelephoneNumber,USD,EUR,CHF,RUB,CZK,GBP,PLN")] Info info)
         {
             if (ModelState.IsValid)
             {
-                db.Infoes.Add(info);
-                await db.SaveChangesAsync();
+                uow.Repository<Info>().Add(info);
+                uow.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(info);
         }
 
         // GET: Edit/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Info info = await db.Infoes.FindAsync(id);
-            if (info == null)
+            var loggedUser = uow.Repository<Info>().GetDetail(p => p.InfoId == id); // add GetAwaiter
+            if (loggedUser == null)
             {
                 return HttpNotFound();
             }
-            return View(info);
+            return View(loggedUser);
         }
 
         // POST: Edit/Edit/5
@@ -97,32 +109,32 @@ namespace ExchangeApplication.Controllers
         }
 
         // GET: Edit/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Info info = await db.Infoes.FindAsync(id);
-            if (info == null)
+            var loggedUser = uow.Repository<Info>().GetDetail(p => p.InfoId == id); // add GetAwaiter
+            if (loggedUser == null)
             {
                 return HttpNotFound();
             }
-            return View(info);
+            return View(loggedUser);
         }
 
         // POST: Edit/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
-        {
-         //   ApplicationUser u = db.Users.Find(id);
-        //    var idd = User.Identity.GetUserId();
-        //    db.Users.Remove(u.Id);
-            Info info = await db.Infoes.FindAsync(id);
-            db.Infoes.Remove(info);
+        public ActionResult DeleteConfirmed(int id)
+        {   
 
-            await db.SaveChangesAsync();
+            var idLoggedUser = User.Identity.GetUserId();
+
+            var loggedUser = uow.Repository < ApplicationUser>().GetDetail(p => p.Id == idLoggedUser);
+            uow.Repository<ApplicationUser>().Delete(loggedUser);
+
+            uow.SaveChanges();
             return RedirectToAction("Log_Off", "Account");
         }
 

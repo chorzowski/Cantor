@@ -5,6 +5,6 @@ namespace ExchangeApplication.Utilities
 {
     public interface IGetUserId
     {
-        ApplicationUser GetUserID(ApplicationDbContext db);
+        ApplicationUser GetUserID();
     }
 }

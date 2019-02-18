@@ -14,10 +14,20 @@ namespace ExchangeApplication.Utilities
         IGetJeson _getJeson;
         ISaveData _saveData;
 
+        private GenericUnitOfWork uow = null;
+
         public BuyMoney(IGetJeson getJeson, ISaveData saveData)
         {
             _getJeson = getJeson;
             _saveData = saveData;
+            uow = new GenericUnitOfWork();
+        }
+
+        public BuyMoney(IGetJeson getJeson, ISaveData saveData, GenericUnitOfWork _uow)
+        {
+            _getJeson = getJeson;
+            _saveData = saveData;
+            this.uow = _uow;
         }
         [HttpPost]
         public ActionResult BuyEUR(int? numberIdUser, string currencyNameString, int amount, ApplicationDbContext db)
@@ -29,6 +39,7 @@ namespace ExchangeApplication.Utilities
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Info info = db.Infoes.Find(numberIdUser);
+
             if (info == null)
             {
                 return HttpNotFound();
@@ -123,7 +134,6 @@ namespace ExchangeApplication.Utilities
                         return View("ErrorLackOfMoney");
                     }
                 default:
-                    //  ViewBag.Message11 = currencyName;
                     return View("Error");
             }
         }

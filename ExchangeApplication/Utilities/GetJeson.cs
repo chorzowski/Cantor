@@ -15,11 +15,7 @@ namespace ExchangeApplication.Utilities
         const string BaseUrl = "http://api.nbp.pl";//c/?format=json";
 
         readonly IRestClient _client;
-        //    public AccountResponse GetJson()
-        //  {
-        //         string json = new WebClient().DownloadString("http://webtask.future-processing.com:8068/currencies/?application/json?application/json");
-        //         var ar = new JavaScriptSerializer().Deserialize<AccountResponse>(json);
-
+     
         public GetJeson()
         {
             _client = new RestClient(BaseUrl);
@@ -38,30 +34,6 @@ namespace ExchangeApplication.Utilities
 
             return response.Data;
         }
-
-        //public AccountResponse GetJson()
-        //{
-        //    //var client = new RestClient("http://webtask.future-processing.com:8068/currencies/");
-        //    //var request = new RestRequest("?application/json", Method.GET) { RequestFormat = DataFormat.Json };
-        //    //var ar = client.Execute<AccountResponse>(request).Data;
-
-
-
-
-
-
-
-
-        //    var client = new RestClient("http://webtask.future-processing.com:8068/currencies/");
-
-        //    var request = new RestRequest("?application/json");
-
-        //    var response = client.Get(request);
-
-        //    Console.WriteLine("Drukuj cokolwiek " + ar.items[0].name);
-
-        //    return ar;
-        //}
-        // }
+        
     }
 }

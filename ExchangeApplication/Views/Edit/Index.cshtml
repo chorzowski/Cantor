@@ -13,9 +13,10 @@
         </th>
       
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=@Model.info.InfoId }) |
-            @Html.ActionLink("Details", "Details", new { id= @Model.info.InfoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id= @Model.info.InfoId })
+            @Html.ActionLink("Edit", "Edit", new { id = @Model.info.InfoId }) |
+            @*@Html.ActionLink("Details", "Generic", "Details", new { id = @Model.info.InfoId }) |*@
+            @Html.ActionLink("Details", "Details", new { id = @Model.info.InfoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = @Model.info.InfoId })
         </td>
     </tr>
 </table>

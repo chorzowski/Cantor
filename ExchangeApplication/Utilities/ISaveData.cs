@@ -6,6 +6,6 @@ namespace ExchangeApplication.Utilities
 {
     public interface ISaveData
     {
-        Task<ActionResult> Save(int? param1, ApplicationDbContext db);
+        ActionResult Save(int? param1, ApplicationDbContext db);
     }
 }

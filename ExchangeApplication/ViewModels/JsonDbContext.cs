@@ -14,7 +14,7 @@ namespace ExchangeApplication.ViewModels
         
         public ApplicationUser user { get; set; }
 
-        public string idUser;
+  //      public string idUser;
     }
 
 }

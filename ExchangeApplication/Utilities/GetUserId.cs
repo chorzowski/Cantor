@@ -1,27 +1,29 @@
 ﻿using ExchangeApplication.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.AspNet.Identity;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using System.Net;
-using System.Web.Script.Serialization;
-using System.Data.Entity;
-using System.Threading.Tasks;
-using ExchangeApplication.Utilities;
+
 
 namespace ExchangeApplication.Utilities
 {
     public class GetUserId : IGetUserId
     {
-   //     var id = User.Identity.GetUserId();
-
-        public ApplicationUser GetUserID(ApplicationDbContext db)
+        private GenericUnitOfWork uow = null;
+        public GetUserId()
         {
-            var id = System.Web.HttpContext.Current.User.Identity.GetUserId();//db.User.Identity.GetUserId();
-            var us = db.Users.Find(id);
-            return us;
+            uow = new GenericUnitOfWork();
+        }
+
+        public GetUserId(GenericUnitOfWork _uow)
+        {
+            this.uow = _uow;
+        }
+
+        public ApplicationUser GetUserID()
+        {
+            var idLoggedUser = HttpContext.Current.User.Identity.GetUserId();
+            var loggedUser = uow.Repository<ApplicationUser>().GetDetail(p => p.Id == idLoggedUser);
+            return loggedUser;
         }
     }
 }

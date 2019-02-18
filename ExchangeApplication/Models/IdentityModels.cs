@@ -19,6 +19,7 @@ namespace ExchangeApplication.Models
             // Dodaj tutaj niestandardowe oświadczenia użytkownika
             return userIdentity;
         }
+
     }
 
     public class Info
@@ -53,4 +54,5 @@ namespace ExchangeApplication.Models
 
         public System.Data.Entity.DbSet<ExchangeApplication.Models.Info> Infoes { get; set; }
     }
+
 }
